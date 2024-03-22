@@ -56,6 +56,7 @@ h1{
     margin-top: 60px;
 }
 
+
 nav {
     margin-top: 10px;
 }
@@ -64,12 +65,30 @@ nav a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
-    transition: color 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Ensure the overflow is hidden */
 }
 
-nav a:hover {
+nav a:hover{
     color: #9bb1bf;
 }
+
+nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 100%; /* Start from the right side */
+    width: 0;
+    height: 2px; /* Adjust thickness of the underline */
+    background-color: #fff;
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+nav a:hover::before {
+    width: 100%; /* Grow the underline towards the left side */
+    right: 0; /* Align the pseudo-element to the right */
+}
+
 
 .listings {
     display: grid;
@@ -86,14 +105,25 @@ nav a:hover {
     box-shadow: 0 6px 9px rgba(0, 0, 0, 0.1);
 }
 
+
+
 .listing-item img {
     width: 100%;
     height: auto;
     border-bottom: 1px solid #eee;
+    border-radius: 12px;
 }
+
+/* Add hover effect for images */
+.listing-item img:hover {
+    transform: scale(1.1); /* Zoom in the image when hovered */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
 
 .listing-item-content {
     padding: 20px;
+
 }
 
 .listing-item-content h2 {
@@ -163,7 +193,6 @@ form input[type="submit"]:hover {
  #about {
     display: flex;
     flex-direction: row; /* Align items horizontally */
-    
     margin-bottom: 50px; /* Add some bottom margin for spacing */
     justify-content: center; /* Center items horizontally */
 
@@ -172,19 +201,16 @@ form input[type="submit"]:hover {
 #about img {
     flex: 0 0 auto; /* Let the image keep its original size */
     margin-right: 20px; /* Add some right margin for spacing */
-    max-width: 50%; /* Limit the maximum width of the image */
+    max-width: 40%; /* Limit the maximum width of the image */
     height: auto; /* Maintain aspect ratio */
+    padding-right: 30px;
 }
-
-.h2 {
-    flex: 1 1 auto; /* Allow the content to grow and shrink */
-    text-align: center; /* Center-align text */
-}
+  
 
 .p {
     flex: 1 1 auto; /* Allow the content to grow and shrink */
     text-align: center; /* Center-align text */
-
+    display: flex;
 }
 /*========================================================================*/
 
@@ -203,7 +229,7 @@ form input[type="submit"]:hover {
 
 .social-links a {
     display: inline-block;
-    color: #fff;
+    color: #00ff2f;
     text-decoration: none;
     margin-right: 10px;
 }
